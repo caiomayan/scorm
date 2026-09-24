@@ -75,6 +75,16 @@ p {
   margin-top: calc(var(--espaco) * 1.5);
 }
 
+.ilustracao {
+  margin: 0 0 calc(var(--espaco) * 1.25);
+}
+
+.ilustracao img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Botões */
 
 .botao {
