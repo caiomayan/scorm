@@ -74,14 +74,10 @@ class TelaQuiz {
     if (!marcada) return;
 
     const escolhida = Number(marcada.value);
-    const { correta, opcoes } = this.quiz.perguntaAtual;
     const acertou = this.quiz.responder(escolhida);
 
-    this.destacarOpcoes(correta, escolhida);
-    this.exibirFeedback(
-      acertou ? 'Você acertou!' : `Você errou. A resposta correta é: ${opcoes[correta]}`,
-      acertou,
-    );
+    this.destacarEscolhida(escolhida, acertou);
+    this.exibirFeedback(acertou ? 'Você acertou!' : 'Você errou.', acertou);
 
     this.el.confirmar.hidden = true;
     this.el.proxima.textContent = this.quiz.ehUltimaPergunta ? 'Ver resultado' : 'Próxima pergunta';
@@ -89,11 +85,13 @@ class TelaQuiz {
     this.el.proxima.focus();
   }
 
-  destacarOpcoes(correta, escolhida) {
+  // Destaca só a opção marcada, sem revelar a correta: o aluno pode reiniciar e tentar de novo.
+  destacarEscolhida(escolhida, acertou) {
     this.el.opcoes.querySelectorAll('.quiz__opcao').forEach((rotulo, indice) => {
       rotulo.querySelector('input').disabled = true;
-      rotulo.classList.toggle('quiz__opcao--correta', indice === correta);
-      rotulo.classList.toggle('quiz__opcao--errada', indice === escolhida && indice !== correta);
+      if (indice === escolhida) {
+        rotulo.classList.add(acertou ? 'quiz__opcao--correta' : 'quiz__opcao--errada');
+      }
     });
   }
 
