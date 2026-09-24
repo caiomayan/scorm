@@ -30,7 +30,8 @@ Cada arquivo JS tem uma responsabilidade só. A regra do quiz (`quiz.js`) não c
 
 1. **Boas-vindas:** apresenta o tema com uma ilustração e tem o botão **Avançar**.
 2. **Quiz:** 3 perguntas de múltipla escolha, uma por vez. O aluno marca uma opção e clica em **Confirmar**.
-   O curso informa na hora se ele acertou ou errou, destaca a resposta correta e libera a próxima pergunta.
+   O curso informa na hora se ele acertou ou errou, destacando a opção marcada, e libera a próxima pergunta.
+   A resposta correta não é revelada, para que uma nova tentativa depois de reiniciar continue valendo.
    No fim aparece a nota:
    - **60% ou mais:** aprovado, com o botão **Avançar** para a conclusão.
    - **Menos de 60%:** reprovado, com o botão **Reiniciar curso** para tentar de novo.
@@ -92,8 +93,10 @@ Roteiro que usei:
 
 ### 2. Em um LMS real
 
-- **SCORM Cloud** (<https://cloud.scorm.com>, conta gratuita): *Library → Add Content → Import a SCORM package*,
-  enviar o `curso-scorm.zip`, clicar em *Launch* e, depois de sair, conferir o *Registration* (status, score, time).
+- **SCORM Cloud** (<https://cloud.scorm.com>, conta gratuita), onde o pacote foi validado: *Library → Add Content →
+  Import a SCORM package*, enviar o `curso-scorm.zip`, clicar em *Launch* e, depois de sair, conferir o
+  *Registration*. O pacote importou sem erros. Numa primeira tentativa reprovada, o registro mostrou `failed`,
+  a nota e o tempo. Depois de reiniciar e aprovar, o status mudou para `passed`.
 - **Moodle:** *Adicionar uma atividade ou recurso → Pacote SCORM*, enviar o `.zip` e salvar. Depois de fazer
   o curso, os resultados aparecem em *Relatórios* da atividade e no *Livro de notas*.
 
