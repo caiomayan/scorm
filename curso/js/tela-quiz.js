@@ -20,6 +20,7 @@ class TelaQuiz {
       nota: elemento('resultado-nota'),
       mensagem: elemento('resultado-mensagem'),
       avancar: elemento('resultado-avancar'),
+      reiniciar: elemento('resultado-reiniciar'),
     };
 
     this.el.formulario.addEventListener('change', () => {
@@ -121,6 +122,7 @@ class TelaQuiz {
       ? 'Você foi aprovado! Avance para concluir o curso.'
       : `Você não atingiu a nota mínima de ${notaMinima}%. Reinicie o curso para tentar novamente.`;
     this.el.avancar.hidden = !aprovado;
+    this.el.reiniciar.hidden = aprovado;
 
     this.el.nota.setAttribute('tabindex', '-1');
     this.el.nota.focus();

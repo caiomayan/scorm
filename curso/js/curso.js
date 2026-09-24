@@ -13,9 +13,17 @@
     },
   });
 
+  const acoes = {
+    avancar: () => navegacao.avancar(),
+    reiniciar: () => {
+      telaQuiz.iniciar();
+      navegacao.voltarAoInicio();
+    },
+  };
+
   document.addEventListener('click', (evento) => {
-    const botao = evento.target.closest('[data-acao]');
-    if (botao?.dataset.acao === 'avancar') navegacao.avancar();
+    const acao = evento.target.closest('[data-acao]')?.dataset.acao;
+    acoes[acao]?.();
   });
 
   // `pagehide` cobre navegadores modernos; `beforeunload` cobre LMS que fecham a janela do curso.
