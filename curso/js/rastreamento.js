@@ -7,6 +7,7 @@ class Rastreamento {
   }
 
   iniciar() {
+    this.inicioSessao = Date.now();
     if (!this.api.iniciar()) return;
 
     // Só marca "incomplete" no primeiro acesso, para não apagar um resultado anterior.
@@ -26,6 +27,18 @@ class Rastreamento {
   }
 
   encerrar() {
+    this.api.definir('cmi.core.session_time', Rastreamento.formatarDuracao(Date.now() - this.inicioSessao));
     this.api.finalizar();
+  }
+
+  // Formato CMITimespan do SCORM 1.2: HHHH:MM:SS.
+  static formatarDuracao(milissegundos) {
+    const totalSegundos = Math.floor(milissegundos / 1000);
+    const horas = Math.floor(totalSegundos / 3600);
+    const minutos = Math.floor((totalSegundos % 3600) / 60);
+    const segundos = totalSegundos % 60;
+    const doisDigitos = (valor) => String(valor).padStart(2, '0');
+
+    return `${String(horas).padStart(4, '0')}:${doisDigitos(minutos)}:${doisDigitos(segundos)}`;
   }
 }
