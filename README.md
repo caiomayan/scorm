@@ -33,11 +33,15 @@ Cada arquivo JS tem uma responsabilidade só. A regra do quiz (`quiz.js`) não c
    O curso informa na hora se ele acertou ou errou, destacando a opção marcada, e libera a próxima pergunta.
    A resposta correta não é revelada, para que uma nova tentativa depois de reiniciar continue valendo.
    No fim aparece a nota:
-   - **60% ou mais:** aprovado, com o botão **Avançar** para a conclusão.
-   - **Menos de 60%:** reprovado, com o botão **Reiniciar curso** para tentar de novo.
-3. **Conclusão:** exibe "Parabéns, você concluiu!", a nota final e o botão **Reiniciar curso**.
+   - **60% ou mais:** aprovado, com os botões **Avançar** (para a conclusão) e **Sair do curso**.
+   - **Menos de 60%:** reprovado, com os botões **Reiniciar curso** e **Sair do curso**.
+3. **Conclusão:** exibe "Parabéns, você concluiu!", a nota final e os botões **Sair do curso** e **Reiniciar curso**.
 
 O botão **Reiniciar curso** zera o quiz e volta para a tela 1. A nova tentativa sobrescreve a nota e o status no LMS.
+
+O botão **Sair do curso** encerra a sessão no LMS (grava o tempo e chama `LMSFinish`) e fecha a janela. O navegador
+só permite fechar janelas abertas por script. Por isso, quando o LMS exibe o curso embutido na própria página,
+aparece a mensagem "Sessão encerrada. Você já pode fechar esta janela."
 
 ## O que é registrado no LMS
 
@@ -46,7 +50,7 @@ O botão **Reiniciar curso** zera o quiz e volta para a tela 1. A nova tentativa
 | Primeiro acesso   | `cmi.core.lesson_status`                 | `incomplete`                   |
 | Fim do quiz       | `cmi.core.score.raw` (`min` 0, `max` 100) | nota de 0 a 100                |
 | Fim do quiz       | `cmi.core.lesson_status`                 | `passed` (≥ 60) ou `failed`    |
-| Ao fechar o curso | `cmi.core.session_time`                  | tempo da sessão (`HHHH:MM:SS`) |
+| Ao sair ou fechar | `cmi.core.session_time`                  | tempo da sessão (`HHHH:MM:SS`) |
 
 No SCORM 1.2 o status é um campo único. Por isso não existe um `completed` separado: `passed` e `failed`
 já indicam que o aluno chegou ao fim do curso.
@@ -88,7 +92,7 @@ Roteiro que usei:
 - Quiz com 3 acertos: `score.raw = 100` e `lesson_status = passed`.
 - Quiz com 2 acertos: nota 67, `passed`. Com 1 acerto: nota 33, `failed`. Com nenhum: nota 0, `failed`.
 - Reprovar, clicar em **Reiniciar curso** e refazer: o quiz volta zerado e o novo resultado sobrescreve o anterior.
-- Ao fechar ou recarregar a página: `session_time` e `LMSFinish`, chamado uma vez só.
+- **Sair do curso** (ou fechar/recarregar a página): `session_time` e `LMSFinish`, chamado uma vez só.
 - Layout conferido em largura de desktop e de celular (375 px).
 
 ### 2. Em um LMS real
@@ -104,4 +108,5 @@ Roteiro que usei:
 
 - **Multimídia:** ilustração em SVG na tela de boas-vindas mostrando onde o HTML, o CSS e o JS atuam numa página.
 - **Botão de reiniciar curso:** na conclusão e no resultado de reprovação.
+- **Botão de sair do curso:** no resultado do quiz e na conclusão, encerrando a sessão no LMS.
 - **Tracking adicional:** tempo gasto na sessão (`cmi.core.session_time`).
