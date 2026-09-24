@@ -8,6 +8,7 @@ Ele registra no LMS o status (`passed`/`failed`), a nota do quiz e o tempo gasto
 ```
 curso/                  conteúdo do pacote SCORM (é o que vai no .zip)
 ├── imsmanifest.xml     manifesto SCORM 1.2 (nota mínima 60)
+├── *.xsd               schemas oficiais do SCORM 1.2 que validam o manifesto
 ├── index.html          as 3 telas
 ├── css/estilo.css      layout responsivo
 ├── img/camadas-web.svg ilustração da tela de boas-vindas
@@ -94,6 +95,7 @@ Roteiro que usei:
 - Reprovar, clicar em **Reiniciar curso** e refazer: o quiz volta zerado e o novo resultado sobrescreve o anterior.
 - **Sair do curso** (ou fechar/recarregar a página): `session_time` e `LMSFinish`, chamado uma vez só.
 - Layout conferido em largura de desktop e de celular (375 px).
+- `imsmanifest.xml` validado contra os schemas `.xsd` incluídos no pacote.
 
 ### 2. Em um LMS real
 
