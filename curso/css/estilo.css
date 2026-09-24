@@ -43,6 +43,11 @@ p {
   margin: 0 0 var(--espaco);
 }
 
+/* Títulos recebem foco via script ao trocar de tela; não precisam de contorno. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
 /* Contêiner e telas */
 
 .curso {
