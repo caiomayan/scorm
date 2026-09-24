@@ -151,13 +151,17 @@ p {
   transition: border-color 0.15s ease;
 }
 
-.quiz__opcao:hover {
+.quiz__opcao:has(input:enabled):hover {
   border-color: var(--cor-destaque);
 }
 
 .quiz__opcao input {
   margin-top: 0.3rem;
   accent-color: var(--cor-destaque);
+}
+
+.quiz__opcao:has(input:disabled) {
+  cursor: default;
 }
 
 .quiz__opcao--correta {

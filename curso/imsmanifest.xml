@@ -28,6 +28,9 @@
       <file href="css/estilo.css"/>
       <file href="js/scorm-api.js"/>
       <file href="js/navegacao.js"/>
+      <file href="js/perguntas.js"/>
+      <file href="js/quiz.js"/>
+      <file href="js/tela-quiz.js"/>
       <file href="js/curso.js"/>
     </resource>
   </resources>
