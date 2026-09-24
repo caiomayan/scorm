@@ -25,6 +25,10 @@ class Navegacao {
     this.mostrar(0);
   }
 
+  irPara(id) {
+    this.mostrar(this.telas.findIndex((tela) => tela.id === id));
+  }
+
   // Leva o foco (e o leitor de tela) para o início do novo conteúdo.
   focarTitulo() {
     const titulo = this.telas[this.indiceAtual].querySelector('h1');

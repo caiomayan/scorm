@@ -19,6 +19,13 @@
       telaQuiz.iniciar();
       navegacao.voltarAoInicio();
     },
+    sair: () => {
+      rastreamento.encerrar();
+      navegacao.irPara('tela-encerrada');
+      // O navegador só permite fechar janelas abertas por script (LMS que abre o curso em janela
+      // própria). Se o curso estiver embutido, a tela de sessão encerrada fica visível.
+      window.top.close();
+    },
   };
 
   document.addEventListener('click', (evento) => {
