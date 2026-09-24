@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1c2230;
+  background: #e9ebef;
+}
+
+.teste {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  height: 100vh;
+}
+
+.teste__curso {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.teste__painel {
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  background: #1c2230;
+  color: #e6e9ef;
+  font-size: 0.85rem;
+}
+
+.teste__painel h1 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.teste__painel h2 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9aa3b5;
+}
+
+.teste__dica {
+  margin: 0.25rem 0 0;
+  color: #9aa3b5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #333b4d;
+  text-align: left;
+  vertical-align: top;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+th {
+  font-weight: 400;
+  color: #9aa3b5;
+  padding-right: 0.75rem;
+}
+
+.teste__registro {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .teste {
+    grid-template-columns: 1fr;
+    grid-template-rows: 70vh auto;
+    height: auto;
+  }
+}

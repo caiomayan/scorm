@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fundamentos de HTML, CSS e JavaScript</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <main class="curso">
+
+    <section class="tela" id="tela-boas-vindas" aria-labelledby="titulo-boas-vindas">
+      <p class="tela__etapa">Etapa 1 de 3</p>
+      <h1 id="titulo-boas-vindas">Bem-vindo ao curso</h1>
+      <figure class="ilustracao">
+        <img src="img/camadas-web.svg" width="530" height="250"
+             alt="Esboço de uma página web: o HTML aponta para a estrutura, o CSS para a aparência e o JS para o botão.">
+      </figure>
+      <p>
+        Toda página web é construída sobre três camadas: o <strong>HTML</strong> define a estrutura,
+        o <strong>CSS</strong> cuida da aparência e o <strong>JavaScript</strong> adiciona comportamento.
+      </p>
+      <p>
+        Neste mini-curso você vai revisar o papel de cada uma delas e responder a um quiz de
+        3 perguntas. Para ser aprovado, é preciso acertar pelo menos 60%.
+      </p>
+      <div class="tela__acoes">
+        <button type="button" class="botao" data-acao="avancar">Avançar</button>
+      </div>
+    </section>
+
+    <section class="tela" id="tela-quiz" aria-labelledby="titulo-quiz" hidden>
+      <p class="tela__etapa">Etapa 2 de 3</p>
+      <h1 id="titulo-quiz">Quiz</h1>
+
+      <form class="quiz" id="quiz">
+        <p class="quiz__progresso" id="quiz-progresso"></p>
+        <fieldset class="quiz__pergunta">
+          <legend id="quiz-enunciado"></legend>
+          <div class="quiz__opcoes" id="quiz-opcoes"></div>
+        </fieldset>
+        <p class="quiz__feedback" id="quiz-feedback" role="status" aria-live="polite"></p>
+        <div class="tela__acoes">
+          <button type="submit" class="botao" id="quiz-confirmar">Confirmar</button>
+          <button type="button" class="botao" id="quiz-proxima" hidden>Próxima pergunta</button>
+        </div>
+      </form>
+
+      <div class="resultado" id="resultado" hidden>
+        <p class="resultado__nota" id="resultado-nota"></p>
+        <p id="resultado-mensagem"></p>
+        <div class="tela__acoes">
+          <button type="button" class="botao" id="resultado-avancar" data-acao="avancar">Avançar</button>
+          <button type="button" class="botao" id="resultado-reiniciar" data-acao="reiniciar">Reiniciar curso</button>
+          <button type="button" class="botao botao--secundario" data-acao="sair">Sair do curso</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="tela" id="tela-conclusao" aria-labelledby="titulo-conclusao" hidden>
+      <p class="tela__etapa">Etapa 3 de 3</p>
+      <h1 id="titulo-conclusao">Parabéns, você concluiu!</h1>
+      <p id="conclusao-nota"></p>
+      <p>Obrigado por participar do curso.</p>
+      <div class="tela__acoes">
+        <button type="button" class="botao" data-acao="sair">Sair do curso</button>
+        <button type="button" class="botao botao--secundario" data-acao="reiniciar">Reiniciar curso</button>
+      </div>
+    </section>
+
+    <section class="tela" id="tela-encerrada" aria-labelledby="titulo-encerrada" hidden>
+      <h1 id="titulo-encerrada">Sessão encerrada</h1>
+      <p>Seu progresso foi salvo. Você já pode fechar esta janela.</p>
+    </section>
+
+  </main>
+
+  <script src="js/scorm-api.js"></script>
+  <script src="js/rastreamento.js"></script>
+  <script src="js/navegacao.js"></script>
+  <script src="js/perguntas.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/tela-quiz.js"></script>
+  <script src="js/curso.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teste local do SCORM</title>
+  <link rel="stylesheet" href="painel.css">
+</head>
+<body>
+  <main class="teste">
+    <iframe class="teste__curso" id="curso" title="Curso SCORM"></iframe>
+
+    <aside class="teste__painel">
+      <h1>LMS simulado</h1>
+      <p class="teste__dica">Recarregue a página para começar uma nova sessão.</p>
+
+      <h2>Dados (cmi)</h2>
+      <table>
+        <tbody id="dados"></tbody>
+      </table>
+
+      <h2>Chamadas</h2>
+      <ol class="teste__registro" id="registro"></ol>
+    </aside>
+  </main>
+
+  <script src="api-simulada.js"></script>
+</body>
+</html>
